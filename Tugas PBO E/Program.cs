@@ -5,7 +5,7 @@ namespace PBO_E
 {
     class get_database
     {
-        private static NpgsqlConnection conection()
+        private static NpgsqlConnection connection()
         {
             return new NpgsqlConnection(@"server=localhost;port=5432;user id=postgres;password=postgres;database=PBO_2047;");
         }
@@ -16,7 +16,7 @@ namespace PBO_E
             try
             {
 
-                NpgsqlConnection con = conection();
+                NpgsqlConnection con = connection();
                 con.Open();
                 string sql = "select * from pengelola";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, con);
@@ -36,7 +36,7 @@ namespace PBO_E
     }
     class crud
     {
-        private static NpgsqlConnection conn()
+        private static NpgsqlConnection connection()
         {
             return new NpgsqlConnection(@"server=localhost;port=5432;user id=postgres;password=postgres;database=PBO_2047;");
         }
@@ -44,7 +44,7 @@ namespace PBO_E
         {
             try
             {
-                NpgsqlConnection con = conn();
+                NpgsqlConnection con = connection();
                 con.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand("insert into pengelola(id,nama,alamat) values ('1','Rizqi','Asembagus')", con);
                 cmd.ExecuteNonQuery();
@@ -64,7 +64,7 @@ namespace PBO_E
         {
             try
             {
-                NpgsqlConnection con = conn();
+                NpgsqlConnection con = connection();
                 con.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand("update pengelola set nama = Rizqi, where id = '1' ", con);
                 cmd.ExecuteNonQuery();
@@ -83,7 +83,7 @@ namespace PBO_E
         {
             try
             {
-                NpgsqlConnection con = conn();
+                NpgsqlConnection con = connection();
                 con.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand("delete from pengelola where id = '1' ", con);
                 cmd.ExecuteNonQuery();
